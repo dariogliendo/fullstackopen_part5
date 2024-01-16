@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import loginService from '../services/login'
 import blogService from '../services/blogs'
 import Notification from './Notification'
+import PropTypes from 'prop-types'
 
 const Login = ({ user, setUser }) => {
   const [username, setUsername] = useState('')
@@ -75,6 +76,11 @@ const Login = ({ user, setUser }) => {
       }
     </>
   )
+}
+
+Login.propTypes = {
+  user: PropTypes.object,
+  setUser: PropTypes.func.isRequired,
 }
 
 export default Login

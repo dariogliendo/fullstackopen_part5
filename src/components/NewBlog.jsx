@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import blogService from '../services/blogs'
 import Notification from './Notification'
 import Togglable from './Togglable'
+import PropTypes from 'prop-types'
 
 const NewBlog = ({ blogs, setBlogs, user }) => {
   const [title, setTitle] = useState('')
@@ -54,6 +55,12 @@ const NewBlog = ({ blogs, setBlogs, user }) => {
       </Togglable>
     </div>
   )
+}
+
+NewBlog.propTypes = {
+  blogs: PropTypes.array.isRequired,
+  setBlogs: PropTypes.func.isRequired,
+  user: PropTypes.object.isRequired
 }
 
 export default NewBlog
