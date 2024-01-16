@@ -21,9 +21,9 @@ const App = () => {
       <Login setUser={setUser} user={user} />
       {user && (
         <>
-          <NewBlog blogs={blogs} setBlogs={setBlogs}/>
-          {user && blogs.map(blog =>
-            <Blog key={blog.id} blog={blog} />
+          <NewBlog blogs={blogs} setBlogs={setBlogs} user={user}/>
+          {user && blogs.sort((a, b) => b.likes - a.likes).map(blog =>
+            <Blog key={blog.id} blog={blog} setBlogs={setBlogs} blogs={blogs}/>
           )}
         </>
       )}
