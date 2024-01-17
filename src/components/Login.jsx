@@ -16,7 +16,7 @@ const Login = ({ user, setUser }) => {
       setUser(user)
       blogService.setToken(user.token)
     }
-  }, [])
+  }, [setUser])
 
   const notify = (type, message) => {
     return new Promise(resolve => {
@@ -34,12 +34,12 @@ const Login = ({ user, setUser }) => {
     try {
       event.preventDefault()
       const response = await loginService.login(username, password)
-      await notify("success", "Logged in successfully")
+      await notify('success', 'Logged in successfully')
       setUser(response)
       localStorage.setItem('loggedUser', JSON.stringify(response))
       blogService.setToken(response.token)
     } catch (error) {
-      notify("error", error.response.data.error)
+      notify('error', error.response.data.error)
     }
   }
 

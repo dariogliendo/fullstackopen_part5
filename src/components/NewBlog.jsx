@@ -34,7 +34,7 @@ const NewBlog = ({ blogs, setBlogs, user }) => {
 
   return (
     <div>
-      <Togglable buttonLabel={"New blog"}>
+      <Togglable buttonLabel={'New blog'}>
         <h2>New blog</h2>
         <form className='formulary'>
           <div className="input">

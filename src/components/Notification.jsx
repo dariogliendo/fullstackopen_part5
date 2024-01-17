@@ -4,7 +4,7 @@ const Notification = ({ notification }) => {
   return notification === null
     ? ''
     : (
-      <span className={"notification " + notification.type}>{notification.message}</span>
+      <span className={'notification ' + notification.type}>{notification.message}</span>
     )
 }
 

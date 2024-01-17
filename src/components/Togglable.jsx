@@ -10,7 +10,7 @@ const Togglable = (props) => {
       <button onClick={() => setVisible(!visible)}>{props.buttonLabel}</button>
       <div style={{ display: visible ? '' : 'none' }}>
         {props.children}
-        <button onClick={() => setVisible(!visible)} style={{marginTop: "1em"}}>{props.cancelLabel || "Cancel"}</button>
+        <button onClick={() => setVisible(!visible)} style={{marginTop: '1em'}}>{props.cancelLabel || 'Cancel'}</button>
       </div>
     </>
   )

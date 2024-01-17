@@ -1,6 +1,6 @@
-import { useState } from "react"
-import blogService from "../services/blogs"
-import PropTypes from "prop-types"
+import { useState } from 'react'
+import blogService from '../services/blogs'
+import PropTypes from 'prop-types'
 
 const Blog = ({ blog, setBlogs, blogs }) => {
   const [detailVisibility, setDetailVisibility] = useState(false)
@@ -31,21 +31,21 @@ const Blog = ({ blog, setBlogs, blogs }) => {
   }
 
   return (
-    <div style={{ border: "1px solid black", borderRadius: "4px", padding: "1em" }}>
-      <div style={{ display: "flex", flexDirection: "row", gap: "4px" }}>
+    <div style={{ border: '1px solid black', borderRadius: '4px', padding: '1em' }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: '4px' }}>
         <span>
           {blog.title} - {blog.author}
         </span>
-        <button onClick={() => setDetailVisibility(!detailVisibility)}>{detailVisibility ? "Hide" : "Show Details"}</button>
+        <button onClick={() => setDetailVisibility(!detailVisibility)}>{detailVisibility ? 'Hide' : 'Show Details'}</button>
       </div>
-      <div style={{ display: detailVisibility ? 'flex' : 'none', flexDirection: "column" }}>
+      <div style={{ display: detailVisibility ? 'flex' : 'none', flexDirection: 'column' }}>
         <span>{blog.url}</span>
-        <div style={{ display: "flex", flexDirection: "row", gap: "4px" }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '4px' }}>
           <span>Likes: {blog.likes || 0}</span>
           <button onClick={addLike}>Like</button>
         </div>
         <span>{blog.user?.name || ''}</span>
-        <button onClick={remove} style={{alignSelf: "flex-start"}}>Remove</button>
+        <button onClick={remove} style={{alignSelf: 'flex-start'}}>Remove</button>
       </div>
     </div>
   )

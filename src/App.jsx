@@ -16,7 +16,7 @@ const App = () => {
   }, [])
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
       <h2>blogs</h2>
       <Login setUser={setUser} user={user} />
       {user && (
