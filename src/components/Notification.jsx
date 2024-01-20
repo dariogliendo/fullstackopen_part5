@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 const Notification = ({ notification }) => {
-  return notification === null
+  return !notification
     ? ''
     : (
       <span className={'notification ' + notification.type}>{notification.message}</span>

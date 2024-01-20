@@ -4,39 +4,16 @@ import Notification from './Notification'
 import Togglable from './Togglable'
 import PropTypes from 'prop-types'
 
-const NewBlog = ({ blogs, setBlogs, user }) => {
+const NewBlog = ({ createBlog, notification }) => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
   const [url, setUrl] = useState('')
-  const [notification, setNotification] = useState(null)
-
-  const notify = (type, message) => {
-    setNotification({
-      type, message
-    })
-    setTimeout(() => {
-      setNotification(null)
-    }, 2000)
-  }
-
-  const createBlog = async (event) => {
-    event.preventDefault()
-    try {
-      const blog = { title, author, url }
-      const newBlog = await blogService.create(blog)
-      newBlog.user = user;
-      setBlogs(blogs.concat(newBlog))
-      notify('success', `a new blog ${newBlog.title} by ${newBlog.author} added`)
-    } catch (error) {
-      notify('error', error.response.data.error)
-    }
-  }
 
   return (
     <div>
-      <Togglable buttonLabel={'New blog'}>
+      <Togglable buttonLabel={'New blog'} openButtonId={'new-blog-button'} cancelButtonId={'new-blog-cancel-button'}>
         <h2>New blog</h2>
-        <form className='formulary'>
+        <form className='new-blog-form' onSubmit={(event) => createBlog({ title, author, url }, event)} style={{ display: 'flex', flexDirection: 'column', gap: 12, alignItems: 'flex-start' }}>
           <div className="input">
             <label htmlFor="title">Title</label>
             <input type="text" name="title" onChange={({ target }) => setTitle(target.value)} />
@@ -49,7 +26,7 @@ const NewBlog = ({ blogs, setBlogs, user }) => {
             <label htmlFor="url" name="url">Url</label>
             <input type="text" name="url" onChange={({ target }) => setUrl(target.value)} />
           </div>
-          <button type="submit" onClick={createBlog}>Submit</button>
+          <button type="submit">Submit</button>
           <Notification notification={notification} />
         </form>
       </Togglable>
@@ -58,9 +35,8 @@ const NewBlog = ({ blogs, setBlogs, user }) => {
 }
 
 NewBlog.propTypes = {
-  blogs: PropTypes.array.isRequired,
-  setBlogs: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired
+  createBlog: PropTypes.func.isRequired,
+  notification: PropTypes.object
 }
 
 export default NewBlog

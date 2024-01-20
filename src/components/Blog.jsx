@@ -38,7 +38,7 @@ const Blog = ({ blog, setBlogs, blogs }) => {
         </span>
         <button onClick={() => setDetailVisibility(!detailVisibility)}>{detailVisibility ? 'Hide' : 'Show Details'}</button>
       </div>
-      <div style={{ display: detailVisibility ? 'flex' : 'none', flexDirection: 'column' }}>
+      <div style={{ display: detailVisibility ? 'flex' : 'none', flexDirection: 'column' }} className='blog-details'>
         <span>{blog.url}</span>
         <div style={{ display: 'flex', flexDirection: 'row', gap: '4px' }}>
           <span>Likes: {blog.likes || 0}</span>
